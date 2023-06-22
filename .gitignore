@@ -2,3 +2,5 @@
 public
 assets
 components
+node_modules
+package-lock.json
