@@ -7,7 +7,7 @@ const PORT = 7999;
 app.use(express.json());
 app.use(cors());
 
-app.use(express.static('./C-module-test/dist'));
+app.use(express.static('./front'));
 
 
 // app.use("/api/outline",require('./routes/Outline'));
