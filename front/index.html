@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <head>
-
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="search" class="flex-container"></div>
+    <div id="search" class="flex-container">
+        <div>
+            Enter In The Table Size:&nbsp;<input id="size" type="number" />
+        <br>Enter In The Loop Cap:&nbsp;&nbsp;<input id="repeat" type="number" />
+        </div>
+        <div>
+            <button id="node-search" >Node-gyp</button>
+            <button id="gcc-search" >Shared Object</button>
+            <button id="wasm-search" >Emscripten</button>
+        </div>
+    </div>
 
     <div id="results" class="flex-container">
-        <div id="gcc">Shared Object</div>
         <div id="node">Node-gyp</div>
+        <div id="gcc">Shared Object</div>
         <div id="wasm">Emscripten</div>
     </div>
     
