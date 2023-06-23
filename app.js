@@ -61,12 +61,14 @@ nodeRouter.route('/:size/:repeat')
 const t2 = require('./emcc/t2.js');
 wasmRouter.route('/:size/:repeat')
 .get((req,res)=>{
-    const size = parseInt(req.params.size);
-    const repeat = parseInt(req.params.repeat);
+    const size = (req.params.size);
+    const repeat = (req.params.repeat);
 
-    let time = new NanoTimer().time((() => {
-    }),'','u')
-    
+    // let time = new NanoTimer().time((() => {
+    //     t2(size, repeat)
+    // }),'','u')
+    console.log( t2(size,repeat))
+    let time= 100000
     return res.send({"time":usToHMS(time),"format":"(hours:minutes:seconds.milli.micro)"});
 });
 
