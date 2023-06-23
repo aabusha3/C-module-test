@@ -58,6 +58,18 @@ nodeRouter.route('/:size/:repeat')
     return res.send({"time":usToHMS(time),"format":"(hours:minutes:seconds.milli.micro)"});
 });
 
+const t2 = require('./emcc/t2.js');
+wasmRouter.route('/:size/:repeat')
+.get((req,res)=>{
+    const size = parseInt(req.params.size);
+    const repeat = parseInt(req.params.repeat);
+
+    let time = new NanoTimer().time((() => {
+    }),'','u')
+    
+    return res.send({"time":usToHMS(time),"format":"(hours:minutes:seconds.milli.micro)"});
+});
+
 
 function usToHMS( us ) {
     var ms = us /1000
