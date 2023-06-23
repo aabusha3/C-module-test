@@ -31,12 +31,12 @@ async function makeCall(type, size, repeat){
             break;
         case 'node':
             fetch(`/api/node/${size}/${repeat}`).then(res=>res.json().then(data=>{
-                
+                console.log(`${data.time}  ${data.format}`)
             }));
             break;
         case 'wasm':
             fetch(`/api/wasm/${size}/${repeat}`).then(res=>res.json().then(data=>{
-                
+                console.log(`${data.time}  ${data.format}`)
             }));
             break;    
     }

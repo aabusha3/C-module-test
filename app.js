@@ -1,7 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const NanoTimer = require('nanotimer');
+
 const ffi = require('ffi-napi');
+const nodeAddon = require('bindings')('gg')
 
 const app = express();
 const PORT = 7999;
@@ -31,8 +33,8 @@ const soAddon = ffi.Library('./gcc/tt', {
 })
 soRouter.route('/:size/:repeat')
 .get((req,res)=>{
-    const size = req.params.size;
-    const repeat = req.params.repeat;
+    const size = parseInt(req.params.size);
+    const repeat = parseInt(req.params.repeat);
     
     let time = new NanoTimer().time((() => {
         for(let i=0; i<repeat; i++) {
@@ -43,15 +45,14 @@ soRouter.route('/:size/:repeat')
     return res.send({"time":usToHMS(time),"format":"(hours:minutes:seconds.milli.micro)"});
 });
 
+
 nodeRouter.route('/:size/:repeat')
 .get((req,res)=>{
-    const size = req.params.size;
-    const repeat = req.params.repeat;
-    
+    const size = parseInt(req.params.size);
+    const repeat = parseInt(req.params.repeat);
+
     let time = new NanoTimer().time((() => {
-        for(let i=0; i<repeat; i++) {
-            soAddon.enter(size);
-        }
+        for(let i=0; i<repeat; i++) nodeAddon.enter(size);
     }),'','u')
     
     return res.send({"time":usToHMS(time),"format":"(hours:minutes:seconds.milli.micro)"});
@@ -63,10 +64,10 @@ function usToHMS( us ) {
     var seconds = ms / 1000;
     ms = ms % 1000
     
-    var hours = parseInt( seconds / 3600 );
+    var hours = parseInt( Math.trunc(seconds / 3600) );
     seconds = seconds % 3600;
     
-    var minutes = parseInt( seconds / 60 ); 
+    var minutes = parseInt( Math.trunc  (seconds / 60) ); 
     seconds = seconds % 60;
     
     us = us % 1000
