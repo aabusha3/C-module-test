@@ -3,7 +3,7 @@ const cors = require('cors');
 const NanoTimer = require('nanotimer');
 
 const ffi = require('ffi-napi');
-// const nodeAddon = require('bindings')('gg')
+const nodeAddon = require('bindings')('gg')
 
 const app = express();
 const PORT = 7999;
@@ -28,16 +28,16 @@ app.use((req,res,next)=>{
 });
 
 
-// const soAddon = ffi.Library('./gcc/tt', {
-//     "enter":["void", ["int"],],
-// })
+const soAddon = ffi.Library('./gcc/tt', {
+    "enter":["void", ["int"],],
+})
 soRouter.route('/:size/:repeat')
 .get((req,res)=>{
     const size = parseInt(req.params.size);
     const repeat = parseInt(req.params.repeat);
     
     let time = new NanoTimer().time((() => {
-        // for(let i=0; i<repeat; i++) soAddon.enter(size);
+        for(let i=0; i<repeat; i++) soAddon.enter(size);
     }),'','u')
 
     return res.send({"time":usToHMS(time),"format":"(hours:minutes:seconds.milli.micro)"});
@@ -50,7 +50,7 @@ nodeRouter.route('/:size/:repeat')
     const repeat = parseInt(req.params.repeat);
 
     let time = new NanoTimer().time((() => {
-        // for(let i=0; i<repeat; i++) nodeAddon.enter(size);
+        for(let i=0; i<repeat; i++) nodeAddon.enter(size);
     }),'','u')
     
     return res.send({"time":usToHMS(time),"format":"(hours:minutes:seconds.milli.micro)"});
@@ -62,11 +62,6 @@ wasmRouter.route('/:size/:repeat')
     const size = (req.params.size);
     const repeat = (req.params.repeat);
 
-    // let time = new NanoTimer().time((() => {
-    //     t2(size, repeat)
-    // }),'','u')
-    // console.log( t2(size,repeat))
-    // let time= 100000
     return res.send({"time":usToHMS(t2(size,repeat)),"format":"(hours:minutes:seconds.milli.micro)"});
 });
 
