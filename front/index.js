@@ -23,20 +23,25 @@ document.getElementById('wasm-search').addEventListener('click', async()=>{await
 }
 
 async function makeCall(type, size, repeat){
+    const resultDisplay = document.getElementById('results')
+    resultDisplay.innerText = 'Getting Time, Please Wait'
     switch(type){
         case 'gcc':
             fetch(`/api/so/${size}/${repeat}`).then(res=>res.json().then(data=>{
                 console.log(`${data.time}  ${data.format}`)
+                resultDisplay = document.getElementById('results').innerText = `${data.time}  ${data.format}`
             }));
             break;
         case 'node':
             fetch(`/api/node/${size}/${repeat}`).then(res=>res.json().then(data=>{
                 console.log(`${data.time}  ${data.format}`)
+                resultDisplay = document.getElementById('results').innerText = `${data.time}  ${data.format}`
             }));
             break;
         case 'wasm':
             fetch(`/api/wasm/${size}/${repeat}`).then(res=>res.json().then(data=>{
                 console.log(`${data.time}  ${data.format}`)
+                resultDisplay = document.getElementById('results').innerText = `${data.time}  ${data.format}`
             }));
             break;    
     }

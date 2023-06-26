@@ -10,4 +10,44 @@
     padding: 20px;
     font-size: 30px;
     line-height: 75px;
-  }
+}
+
+.bnchTitle {
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
+    line-height: 75px;
+    width: 55%;
+}
+
+.flex-btn {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+button {
+    font-size: 20px;
+    width: 200px;
+    height: 40px;
+    margin: 5px;
+}
+input {
+    font-size: 20px;
+}
+
+table, td, th {
+    border: 1px solid;
+    padding: 10px;
+}
+
+td {
+    text-align: center;
+    width: 150px;
+}
+  
+table {
+    font-size: 25px;
+    width: 100%;
+    border-collapse: collapse;
+}
