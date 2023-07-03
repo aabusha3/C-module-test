@@ -4,21 +4,39 @@
     flex-wrap: wrap;
 }
 
-.flex-container > div {
+.flex-container2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.flex-container2 > div {
     background-color: #f1f1f1;
     margin: 10px;
     padding: 20px;
-    font-size: 30px;
+    font-size: 20px;
     line-height: 75px;
+}
+
+#top{
+    min-width: 800px; 
+    justify-content: space-around;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+#search > #input{
+    width: 64.5%;
+    text-align: right;
 }
 
 .bnchTitle {
     background-color: #f1f1f1;
     margin: 10px;
     padding: 20px;
-    font-size: 30px;
+    font-size: 20px;
     line-height: 75px;
-    width: 55%;
+    width: 93.5%;
 }
 
 .flex-btn {
@@ -43,11 +61,11 @@ table, td, th {
 
 td {
     text-align: center;
-    width: 150px;
+    width: 100px;
 }
   
 table {
-    font-size: 25px;
+    font-size: 15px;
     width: 100%;
     border-collapse: collapse;
 }

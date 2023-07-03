@@ -19,32 +19,43 @@ document.getElementById('wasm-search').addEventListener('click', async()=>{await
     // console.log(size)
     // console.log(repeat)
 
-    await makeCall(type, size, repeat);
+    makeCall(type, size, repeat);
 }
+
+async function getProcessedData(url) {
+    let v;
+    try {
+      v = await fetch(url);
+    } catch (ignore) {}
+    return await getProcessedJSON(v);
+}
+
+async function getProcessedJSON(res) {
+    let v;
+    try {
+      v = await res.json();
+    } catch (ignore) {}
+    return await processDataInWorker(v);
+}
+
+async function processDataInWorker(data) {
+    console.log(`${data.time}  ${data.format}`)
+    return await data;
+}
+  
 
 async function makeCall(type, size, repeat){
     const resultDisplay = document.getElementById('results')
-    resultDisplay.innerText = 'Getting Time, Please Wait'
-    switch(type){
-        case 'gcc':
-            fetch(`/api/so/${size}/${repeat}`).then(res=>res.json().then(data=>{
-                console.log(`${data.time}  ${data.format}`)
-                resultDisplay.innerText = `${data.time}  ${data.format}`
-            }));
-            break;
-        case 'node':
-            fetch(`/api/node/${size}/${repeat}`).then(res=>res.json().then(data=>{
-                console.log(`${data.time}  ${data.format}`)
-                resultDisplay.innerText = `${data.time}  ${data.format}`
-            }));
-            break;
-        case 'wasm':
-            fetch(`/api/wasm/${size}/${repeat}`).then(res=>res.json().then(data=>{
-                console.log(`${data.time}  ${data.format}`)
-                resultDisplay.innerText = `${data.time}  ${data.format}`
-            }));
-            break;    
-    }
+    const newResult = document.createElement('li')
+    resultDisplay.appendChild(newResult)
+
+    let data = {}
+    newResult.innerText = `Getting Time For ${type} of ${size}x${size} for ${repeat}, Please Wait`
+    await Promise.all([
+        (async () => data = await getProcessedData(`/api/${type}/${size}/${repeat}`))(),
+    ]);
+
+    newResult.innerText = `${type} of ${size}x${size} for ${repeat} returned in ${data.time}  ${data.format}`
 }
 
 

@@ -3,146 +3,153 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="search" class="flex-container">
-        <div>
-            Enter In The Table Size:&nbsp;<input id="size" type="number" />
-        <br>Enter In The Loop Cap:&nbsp;&nbsp;<input id="repeat" type="number" />
+    <div class="flex-container">
+        <div id="top" >
+            <div id="search" class="flex-container2">
+                <div id="input">
+                    Enter In The Table Size:&nbsp;&nbsp;&nbsp;<input id="size" type="number" />
+                <br>Enter In The Loop Cap:&nbsp;&nbsp;&nbsp;&nbsp;<input id="repeat" type="number" />
+                </div>
+                <div class="flex-btn">
+                    <button id="node-search" >Node-gyp</button>
+                    <button id="gcc-search" >Shared Object</button>
+                    <button id="wasm-search" >Emscripten</button>
+                </div>
+            </div>
+        
+            <div class="bnchTitle">Standardized Benchmarks For Creating A <b>n</b> x <b>n</b> Table <b>m</b> Times</div>
+            <div id="benchmarks" class="flex-container2">
+                <div id="units">n, m (time unit)
+                    <table>
+                        <tr><th>100, 100 (ms)</th></tr>
+                        <tr><th>100, 1000 (ms)</th></tr>
+                        <tr><th>100, 10000 (ms)</th></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr><th>1000, 100 (ms)</th></tr>
+                        <tr><th>1000, 1000 (s)</th></tr>
+                        <tr><th>1000, 10000 (s)</th></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr><th>10000, 100 (s)</th></tr>
+                        <tr><th>10000, 1000 (m:ss.mmm)</th></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr><th>25000, 10 (s)</th></tr>
+                        <tr><th>25000, 100 (m:ss.mmm)</th></tr>
+                        <tr><th>25000, 1000 (mm:ss.mmm)</th></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr><th>200, 1000000 (s)</th></tr>
+                        <tr><th>200, 10000000 (mm:ss.mmm)</th></tr>
+                        <tr><th>200, 100000000 (mm:ss.mmm)</th></tr>
+                    </table>
+                </div>
+                <div id="node">Node-gyp
+                    <table>
+                        <tr><td>0.456</td></tr>
+                        <tr><td>2.555</td></tr>
+                        <tr><td>25.036</td></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr><td>27.406</td></tr>
+                        <tr><td>0.244951</td></tr>
+                        <tr><td>2.392</td></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr><td>12.457</td></tr>
+                        <tr><td>2:06.628</td></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr><td>6.828</td></tr>
+                        <tr><td>1:07.734</td></tr>
+                        <tr><td>11:19.051</td></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr><td>9.087</td></tr>
+                        <tr><td>1:30.763</td></tr>
+                        <tr><td>15:08.622</td></tr>
+                    </table>
+                </div>
+                <div id="gcc">Shared Object
+                    <table>
+                        <tr><td>3.901</td></tr>
+                        <tr><td>39.05</td></tr>
+                        <tr><td>382.01</td></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr><td>308.173</td></tr>
+                        <tr><td>3.053</td></tr>
+                        <tr><td>30.97</td></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr><td>39.099</td></tr>
+                        <tr><td>6:34.651</td></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr><td>24.401</td></tr>
+                        <tr><td>4:03.625</td></tr>
+                        <tr><td>40:44.398</td></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr><td style="line-height: 37.5px;">2:13.490 (m:ss.mmm)</td></tr>
+                        <tr><td>22:06.935</td></tr>
+                        <tr><td style="line-height: 37.5px;">Heap Limit Reached</td></tr>
+                    </table>
+                </div>
+                <div id="wasm">Emscripten
+                    <table>
+                        <tr><td>1.527</td></tr>
+                        <tr><td>12.816</td></tr>
+                        <tr><td>123.533</td></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr><td>125.373</td></tr>
+                        <tr><td>1.229</td></tr>
+                        <tr><td>12.269</td></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr><td style="line-height: 37.5px;">Cannot Enralge Memory</td></tr>
+                        <tr><td style="line-height: 37.5px;">Cannot Enralge Memory</td></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr><td style="line-height: 37.5px;">Cannot Enralge Memory</td></tr>
+                        <tr><td style="line-height: 37.5px;">Cannot Enralge Memory</td></tr>
+                        <tr><td style="line-height: 37.5px;">Cannot Enralge Memory</td></tr>
+                    </table>
+                    <br>
+                    <table>
+                        <tr><td>48.886</td></tr>
+                        <tr><td>8:09.625</td></tr>
+                        <tr><td style="line-height: 37.5px;">1:43:18.392 (h:mm:ss.mmm)</td></tr>
+                    </table>
+                </div>
+            </div>
         </div>
-        <div class="flex-btn">
-            <button id="node-search" >Node-gyp</button>
-            <button id="gcc-search" >Shared Object</button>
-            <button id="wasm-search" >Emscripten</button>
-        </div>
-        <div>
-            <h3 id="results"></h3>
-        </div>
-    </div>
 
-    <div class="bnchTitle">Standardized Benchmarks For Creating A n x n Table m Times</div>
-    <div id="benchmarks" class="flex-container">
-        <div id="units">n, m (time unit)
-            <table>
-                <tr><th>100, 100 (ms)</th></tr>
-                <tr><th>100, 1000 (ms)</th></tr>
-                <tr><th>100, 10000 (ms)</th></tr>
-            </table>
-            <br>
-            <table>
-                <tr><th>1000, 100 (ms)</th></tr>
-                <tr><th>1000, 1000 (s)</th></tr>
-                <tr><th>1000, 10000 (s)</th></tr>
-            </table>
-            <br>
-            <table>
-                <tr><th>10000, 100 (s)</th></tr>
-                <tr><th>10000, 1000 (m:ss.mmm)</th></tr>
-            </table>
-            <br>
-            <table>
-                <tr><th>25000, 10 (s)</th></tr>
-                <tr><th>25000, 100 (m:ss.mmm)</th></tr>
-                <tr><th>25000, 1000 (mm:ss.mmm)</th></tr>
-            </table>
-            <br>
-            <table>
-                <tr><th>200, 1000000 (s)</th></tr>
-                <tr><th>200, 10000000 (mm:ss.mmm)</th></tr>
-                <tr><th>200, 100000000 (mm:ss.mmm)</th></tr>
-            </table>
-        </div>
-        <div id="node">Node-gyp
-            <table>
-                <tr><td>0.456</td></tr>
-                <tr><td>2.555</td></tr>
-                <tr><td>25.036</td></tr>
-            </table>
-            <br>
-            <table>
-                <tr><td>27.406</td></tr>
-                <tr><td>0.244951</td></tr>
-                <tr><td>2.392</td></tr>
-            </table>
-            <br>
-            <table>
-                <tr><td>12.457</td></tr>
-                <tr><td>2:06.628</td></tr>
-            </table>
-            <br>
-            <table>
-                <tr><td>6.828</td></tr>
-                <tr><td>1:07.734</td></tr>
-                <tr><td>11:19.051</td></tr>
-            </table>
-            <br>
-            <table>
-                <tr><td>9.087</td></tr>
-                <tr><td>1:30.763</td></tr>
-                <tr><td>15:08.622</td></tr>
-            </table>
-        </div>
-        <div id="gcc">Shared Object
-            <table>
-                <tr><td>3.901</td></tr>
-                <tr><td>39.05</td></tr>
-                <tr><td>382.01</td></tr>
-            </table>
-            <br>
-            <table>
-                <tr><td>308.173</td></tr>
-                <tr><td>3.053</td></tr>
-                <tr><td>30.97</td></tr>
-            </table>
-            <br>
-            <table>
-                <tr><td>39.099</td></tr>
-                <tr><td>6:34.651</td></tr>
-            </table>
-            <br>
-            <table>
-                <tr><td>24.401</td></tr>
-                <tr><td>4:03.625</td></tr>
-                <tr><td>40:44.398</td></tr>
-            </table>
-            <br>
-            <table>
-                <tr><td style="font-size: 24px; line-height: 37.5px;">2:13.490 (m:ss.mmm)</td></tr>
-                <tr><td>22:06.935</td></tr>
-                <tr><td style="font-size: 24px; line-height: 37.5px;">Heap Limit Reached</td></tr>
-            </table>
-        </div>
-        <div id="wasm">Emscripten
-            <table>
-                <tr><td>1.527</td></tr>
-                <tr><td>12.816</td></tr>
-                <tr><td>123.533</td></tr>
-            </table>
-            <br>
-            <table>
-                <tr><td>125.373</td></tr>
-                <tr><td>1.229</td></tr>
-                <tr><td>12.269</td></tr>
-            </table>
-            <br>
-            <table>
-                <tr><td style="font-size: 24px; line-height: 37.5px;">Cannot Enralge Memory</td></tr>
-                <tr><td style="font-size: 24px; line-height: 37.5px;">Cannot Enralge Memory</td></tr>
-            </table>
-            <br>
-            <table>
-                <tr><td style="font-size: 24px; line-height: 37.5px;">Cannot Enralge Memory</td></tr>
-                <tr><td style="font-size: 24px; line-height: 37.5px;">Cannot Enralge Memory</td></tr>
-                <tr><td style="font-size: 24px; line-height: 37.5px;">Cannot Enralge Memory</td></tr>
-            </table>
-            <br>
-            <table>
-                <tr><td>48.886</td></tr>
-                <tr><td>8:09.625</td></tr>
-                <tr><td style="font-size: 24px; line-height: 37.5px;">1:43:18.392 (h:mm:ss.mmm)</td></tr>
-            </table>
+
+        <div id="top" >
+            <div>
+                <ul id="results"></ul>
+            </div>
         </div>
     </div>
     
-    <div id="moreNotes" class="flex-container"></div>
 
     <script src="index.js"></script>
 </body>
