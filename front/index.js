@@ -19,7 +19,10 @@ document.getElementById('wasm-search').addEventListener('click', async()=>{await
     // console.log(size)
     // console.log(repeat)
 
-    makeCall(type, size, repeat);
+    // makeCall(type, size, repeat);
+    await Promise.all([
+        (async () => makeCall(type, size, repeat))(),
+    ]);
 }
 
 async function getProcessedData(url) {
@@ -39,7 +42,7 @@ async function getProcessedJSON(res) {
 }
 
 async function processDataInWorker(data) {
-    console.log(`${data.time}  ${data.format}`)
+    // console.log(`${data.time}  ${data.format}`)
     return await data;
 }
   
@@ -56,6 +59,7 @@ async function makeCall(type, size, repeat){
     ]);
 
     newResult.innerText = `${type} of ${size}x${size} for ${repeat} returned in ${data.time}  ${data.format}`
+    console.log(`${type} of ${size}x${size} for ${repeat} returned in ${data.time}  ${data.format}`)
 }
 
 

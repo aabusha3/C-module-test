@@ -15,7 +15,7 @@ const soRouter = express.Router();
 const nodeRouter = express.Router();
 const wasmRouter = express.Router();
 
-// soRouter.use(express.json());
+soRouter.use(express.json());
 
 app.use(express.static('./front'));
 app.use('/api/gcc', soRouter)

@@ -19,14 +19,14 @@
 }
 
 #top{
-    min-width: 800px; 
+    min-width: 850px; 
     justify-content: space-around;
     flex-direction: column;
     border: 1px solid black;
 }
 
 #search > #input{
-    width: 64.5%;
+    width: 58%;
     text-align: right;
 }
 
@@ -36,7 +36,7 @@
     padding: 20px;
     font-size: 20px;
     line-height: 75px;
-    width: 93.5%;
+    width: 90%;
 }
 
 .flex-btn {
