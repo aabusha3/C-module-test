@@ -1,4 +1,5 @@
-run the code in a linux environment to run this properly
-run:
+Run the code in a linux environment to have full access
+```
 npm i
 node app.js
+```
